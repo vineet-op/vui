@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "acme",
+  "homepage": "https://acme.com",
+  "items": [
+    {
+      "name": "mask-hover",
+      "type": "registry:block",
+      "title": "Mask Hover",
+      "description": "Interactive mask hover. Spotlight follows cursor; customizable text, colors, mask size. Includes MousePointer hook and mask.svg.",
+      "files": [
+        {
+          "path": "components/custom/MaskHover.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "lib/MousePointer.ts",
+          "type": "registry:block"
+        },
+        {
+          "path": "public/mask.svg",
+          "type": "registry:block"
+        }
+      ]
+    }
+  ]
+}

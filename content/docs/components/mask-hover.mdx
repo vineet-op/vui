@@ -1,0 +1,251 @@
+---
+title: Mask Hover
+description: Interactive mask hover component with spotlight effect that follows cursor
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import MaskHoverDemo from "@/components/custom/MaskHoverDemo";
+
+## Overview
+
+The **Mask Hover** component creates an interactive spotlight effect that follows your cursor. When you hover over the content, the mask expands to reveal hidden text with smooth animations.
+
+<Tabs items={['Preview', 'Code']}>
+  <Tab value="Preview">
+    <div className="not-prose my-8">
+      <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden border border-border">
+        <MaskHoverDemo />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import MaskHover from '@/components/custom/MaskHover';
+
+    export default function Page() {
+      return <MaskHover />;
+    }
+    ```
+  </Tab>
+</Tabs>
+
+## Features
+
+- 🎯 Cursor-following spotlight effect
+- ✨ Smooth mask size transitions
+- 🎨 Fully customizable colors and text
+- 📦 Self-contained (no external dependencies for mask)
+- ⚡ Built with Framer Motion for smooth animations
+
+## Installation
+
+<Tabs items={['CLI', 'Manual']}>
+  <Tab value="CLI">
+    Install the component using the CLI:
+
+    ```bash
+    npx shadcn@latest add http://localhost:3000/r/mask-hover.json
+    ```
+
+  </Tab>
+  <Tab value="Manual">
+    Copy and paste the following code into your project:
+
+    1. Install dependencies:
+    ```bash
+    pnpm add motion
+    ```
+
+    2. Copy the component files:
+    - `components/custom/MaskHover.tsx`
+    - `lib/MousePointer.ts`
+
+  </Tab>
+</Tabs>
+
+## Usage
+
+### Basic Example
+
+<Tabs items={['Preview', 'Code']}>
+  <Tab value="Preview">
+    <div className="not-prose my-8">
+      <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden border border-border">
+        <MaskHoverDemo />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import MaskHover from '@/components/custom/MaskHover';
+
+    export default function Page() {
+      return <MaskHover />;
+    }
+    ```
+
+  </Tab>
+</Tabs>
+
+### Custom Text and Colors
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab value="Preview">
+    <div className="not-prose my-8">
+      <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden border border-border">
+        <MaskHoverDemo
+          heroContent={
+            <>
+              Welcome to <span className="text-blue-500">My Site</span>
+            </>
+          }
+          maskRevealContent={
+            <>
+              <span className="text-white">Building amazing experiences</span>
+            </>
+          }
+          maskBackgroundColor="#6366f1"
+          backgroundColor="bg-slate-900"
+        />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <MaskHover
+      heroContent={
+        <>
+          Welcome to <span className="text-blue-500">My Site</span>
+        </>
+      }
+      maskRevealContent={
+        <>
+          <span className="text-white">Building amazing experiences</span>
+        </>
+      }
+      maskBackgroundColor="#6366f1"
+      backgroundColor="bg-slate-900"
+    />
+    ```
+  </Tab>
+</Tabs>
+
+### Custom Mask Size
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab value="Preview">
+    <div className="not-prose my-8">
+      <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden border border-border">
+        <MaskHoverDemo
+          initialMaskSize={60}
+          hoverMaskSize={500}
+          maskTransitionDuration={0.4}
+          maskTransitionEase="easeInOut"
+        />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <MaskHover
+      initialMaskSize={60}
+      hoverMaskSize={500}
+      maskTransitionDuration={0.4}
+      maskTransitionEase="easeInOut"
+    />
+    ```
+  </Tab>
+</Tabs>
+
+## Props
+
+| Prop                     | Type        | Default             | Description                                                     |
+| ------------------------ | ----------- | ------------------- | --------------------------------------------------------------- |
+| `className`              | `string`    | -                   | Additional CSS classes for the root container                   |
+| `heroContent`            | `ReactNode` | Default hero text   | Content shown behind the mask                                   |
+| `maskRevealContent`      | `ReactNode` | Default reveal text | Content revealed inside the spotlight                           |
+| `backgroundColor`        | `string`    | `"bg-neutral-950"`  | Page background (Tailwind class or CSS color)                   |
+| `maskBackgroundColor`    | `string`    | `"lightcoral"`      | Spotlight circle background color                               |
+| `maskTextColor`          | `string`    | `"#171717"`         | Default text color inside the mask                              |
+| `initialMaskSize`        | `number`    | `40`                | Mask circle size in px when not hovered                         |
+| `hoverMaskSize`          | `number`    | `400`               | Mask circle size in px when hovered                             |
+| `maskTransitionDuration` | `number`    | `0.3`               | Duration (seconds) of mask transitions                          |
+| `maskTransitionEase`     | `string`    | `"backOut"`         | Easing function for mask animation                              |
+| `maskSvg`                | `string`    | Circle SVG          | Custom SVG for mask shape (use `fill="white"` for visible area) |
+
+## Examples
+
+### Different Color Schemes
+
+<Tabs items={['Purple', 'Green', 'Code']}>
+  <Tab value="Purple">
+    <div className="not-prose my-8">
+      <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden border border-border">
+        <MaskHoverDemo
+          maskBackgroundColor="#8b5cf6"
+          backgroundColor="bg-purple-950"
+        />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Green">
+    <div className="not-prose my-8">
+      <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden border border-border">
+        <MaskHoverDemo
+          maskBackgroundColor="#10b981"
+          backgroundColor="bg-emerald-950"
+        />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    // Purple theme
+    <MaskHover
+      maskBackgroundColor="#8b5cf6"
+      backgroundColor="bg-purple-950"
+    />
+
+    // Green theme
+    <MaskHover
+      maskBackgroundColor="#10b981"
+      backgroundColor="bg-emerald-950"
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Custom Mask Shape
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab value="Preview">
+    <div className="not-prose my-8">
+      <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden border border-border">
+        <MaskHoverDemo maskSvg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="25" y="25" width="50" height="50" fill="white"/></svg>' />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <MaskHover maskSvg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="25" y="25" width="50" height="50" fill="white"/></svg>' />
+    ```
+  </Tab>
+</Tabs>
+
+## How It Works
+
+The component uses:
+
+1. **MousePointer hook** - Tracks cursor position in real-time
+2. **CSS Mask** - Creates the spotlight effect using inline SVG data URL
+3. **Framer Motion** - Animates mask position and size smoothly
+4. **Hover state** - Expands the mask when hovering over the reveal content
+
+The mask is self-contained with an inline SVG, so no external files are needed.
+
+## Notes
+
+- The component uses `pointer-events-none` on the mask layer to prevent blocking interactions
+- The inner content div has `pointer-events-auto` to capture hover events
+- For best results, use contrasting colors between hero and mask content
