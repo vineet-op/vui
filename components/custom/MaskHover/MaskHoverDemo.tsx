@@ -48,12 +48,12 @@ const defaultHeroContent = (
 )
 
 const defaultMaskRevealContent = (
-    <>
+    <div className="flex flex-col items-center justify-center">
         <span className="text-black">What I do ? </span>
         <span className="text-white"> I craft </span>
         <span className="text-black">digital experiences</span>
         <span className="text-white"> that breathe life into the web 🌟</span>
-    </>
+    </div>
 )
 
 export default function MaskHoverDemo({

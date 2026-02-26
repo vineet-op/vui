@@ -4,7 +4,7 @@ description: Interactive mask hover component with spotlight effect that follows
 ---
 
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-import MaskHoverDemo from "@/components/custom/MaskHoverDemo";
+import MaskHoverDemo from "@/components/custom/MaskHover/MaskHoverDemo";
 
 ## Overview
 
@@ -20,12 +20,13 @@ The **Mask Hover** component creates an interactive spotlight effect that follow
   </Tab>
   <Tab value="Code">
     ```tsx
-    import MaskHover from '@/components/custom/MaskHover';
+    import MaskHover from '@/components/custom/MaskHover/MaskHover';
 
     export default function Page() {
       return <MaskHover />;
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -77,7 +78,7 @@ The **Mask Hover** component creates an interactive spotlight effect that follow
   </Tab>
   <Tab value="Code">
     ```tsx
-    import MaskHover from '@/components/custom/MaskHover';
+    import MaskHover from '@/components/custom/MaskHover/MaskHover';
 
     export default function Page() {
       return <MaskHover />;
@@ -125,33 +126,6 @@ The **Mask Hover** component creates an interactive spotlight effect that follow
       }
       maskBackgroundColor="#6366f1"
       backgroundColor="bg-slate-900"
-    />
-    ```
-  </Tab>
-</Tabs>
-
-### Custom Mask Size
-
-<Tabs items={["Preview", "Code"]}>
-  <Tab value="Preview">
-    <div className="not-prose my-8">
-      <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden border border-border">
-        <MaskHoverDemo
-          initialMaskSize={60}
-          hoverMaskSize={500}
-          maskTransitionDuration={0.4}
-          maskTransitionEase="easeInOut"
-        />
-      </div>
-    </div>
-  </Tab>
-  <Tab value="Code">
-    ```tsx
-    <MaskHover
-      initialMaskSize={60}
-      hoverMaskSize={500}
-      maskTransitionDuration={0.4}
-      maskTransitionEase="easeInOut"
     />
     ```
   </Tab>
@@ -215,25 +189,6 @@ The **Mask Hover** component creates an interactive spotlight effect that follow
 
   </Tab>
 </Tabs>
-
-### Custom Mask Shape
-
-<Tabs items={["Preview", "Code"]}>
-  <Tab value="Preview">
-    <div className="not-prose my-8">
-      <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden border border-border">
-        <MaskHoverDemo maskSvg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="25" y="25" width="50" height="50" fill="white"/></svg>' />
-      </div>
-    </div>
-  </Tab>
-  <Tab value="Code">
-    ```tsx
-    <MaskHover maskSvg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="25" y="25" width="50" height="50" fill="white"/></svg>' />
-    ```
-  </Tab>
-</Tabs>
-
-## How It Works
 
 The component uses:
 

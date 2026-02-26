@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-stagger",
+  "title": "Text Stagger",
+  "description": "A text stagger component that animates the text as it is hovered over. It is a reusable component that can be used to animate any text.",
+  "files": [
+    {
+      "path": "components/custom/TextStagger/TextStagger.tsx",
+      "content": "\"use client\"\r\nimport { motion } from \"motion/react\"\r\n\r\n\r\nconst TextStagger = ({ children, href, className, duration = 0.25, staggerDelay = 0.025 }: {\r\n    children: string,\r\n    href: string,\r\n    className?: string,\r\n    duration?: number,\r\n    staggerDelay?: number\r\n}) => {\r\n    return (\r\n        <motion.a\r\n            initial=\"initial\"\r\n            whileHover=\"hovered\"\r\n            className={className || \"relative block overflow-hidden whitespace-nowrap text-4xl font-black uppercase sm:text-7xl md:text-8xl lg:text-8xl font-sans text-black\"}\r\n            href={href}>\r\n\r\n            <div>\r\n                {children.split(\"\").map((l, i) => (\r\n                    <motion.span\r\n                        className=\"inline-block\"\r\n                        variants={{\r\n                            initial: {\r\n                                y: 0,\r\n                            },\r\n                            hovered: {\r\n                                y: \"-100%\"\r\n                            }\r\n                        }}\r\n                        transition={{\r\n                            duration: duration,\r\n                            ease: \"easeInOut\",\r\n                            delay: staggerDelay * i\r\n                        }}\r\n                        key={i}>{l === \" \" ? \"\\u00A0\" : l}</motion.span>\r\n                ))}\r\n            </div>\r\n\r\n\r\n            <div className=\"absolute inset-0\">\r\n                {children.split(\"\").map((l, i) => (\r\n                    <motion.span\r\n                        className=\"inline-block\"\r\n                        variants={{\r\n                            initial: {\r\n                                y: \"100%\",\r\n                            },\r\n                            hovered: {\r\n                                y: \"0\"\r\n                            },\r\n                        }}\r\n                        transition={{\r\n                            duration: duration,\r\n                            ease: \"easeInOut\",\r\n                            delay: staggerDelay * i\r\n                        }} key={i}>{l === \" \" ? \"\\u00A0\" : l}</motion.span>\r\n                ))}\r\n            </div>\r\n        </motion.a>\r\n    )\r\n}\r\n\r\nexport default TextStagger",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:block"
+}

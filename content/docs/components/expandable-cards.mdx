@@ -1,0 +1,255 @@
+---
+title: Expandable Cards
+description: A fully reusable expandable cards component with modal detail view and smooth animations
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import ExpandableCardsDemo from "@/components/custom/ExpandableCards/ExpandableCardsDemo";
+
+## Overview
+
+The **Expandable Cards** component is a fully generic and reusable component that displays a grid of cards with smooth animations. When you click a card, it expands into a modal with detailed information. The component works with any data type through generic props.
+
+## Installation
+
+<Tabs items={['CLI']}>
+  <Tab value="CLI">
+    Install the component using the CLI:
+
+    ```bash
+    npx shadcn@latest add http://localhost:3000/r/expandable-cards.json
+    ```
+
+  </Tab>
+</Tabs>
+
+## Usage
+
+### Basic Example with Pokemon Data
+
+<Tabs items={['Preview', 'Code']}>
+  <Tab value="Preview">
+    <div className="not-prose my-8">
+      <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden border border-border">
+        <ExpandableCardsDemo />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    "use client"
+
+    import ExpandableCards from '@/components/custom/ExpandableCards/expandable-cards';
+    import { PokemonData } from '@/lib/PokemonData';
+
+    const POKEMON_TYPE_COLORS = {
+      Fire: "bg-gradient-to-br from-red-400 to-red-600",
+      Water: "bg-gradient-to-br from-blue-400 to-blue-600",
+      Grass: "bg-gradient-to-br from-green-400 to-green-600",
+      Electric: "bg-gradient-to-br from-yellow-400 to-yellow-600",
+      Poison: "bg-gradient-to-br from-purple-600 to-purple-800",
+      Normal: "bg-gradient-to-br from-gray-600 to-gray-800",
+    };
+
+    export default function Page() {
+      return (
+        <ExpandableCards
+          items={PokemonData}
+          getItemId={(p) => p.id}
+          getTitle={(p) => p.name}
+          getSubtitle={(p) => `#${String(p.id).padStart(3, "0")}`}
+          getImage={(p) => p.image}
+          getTags={(p) => p.type.split("/").map((t) => t.trim())}
+          getCardClassName={(p) => {
+            const primaryType = p.type.split("/")[0];
+            return POKEMON_TYPE_COLORS[primaryType] || "bg-gray-600";
+          }}
+          getDetailSections={() => ({
+            attributes: [
+              { label: "Height", value: "0.7 m" },
+              { label: "Weight", value: "6.9 kg" },
+            ],
+            stats: { hp: 45, attack: 49, defense: 49, speed: 45 },
+            statsMax: 100,
+          })}
+        />
+      );
+    }
+    ```
+
+  </Tab>
+</Tabs>
+
+### Custom Data Example (Products)
+
+<Tabs items={['Code']}>
+  <Tab value="Code">
+    ```tsx
+    "use client"
+
+    import ExpandableCards from '@/components/custom/ExpandableCards/expandable-cards';
+
+    const products = [
+      {
+        id: 1,
+        name: "Wireless Headphones",
+        category: "Electronics",
+        price: "$99.99",
+        image: "/products/headphones.jpg",
+        rating: 4.5,
+        reviews: 128,
+      },
+      // ... more products
+    ];
+
+    export default function ProductsPage() {
+      return (
+        <ExpandableCards
+          items={products}
+          getItemId={(p) => p.id}
+          getTitle={(p) => p.name}
+          getSubtitle={(p) => p.price}
+          getImage={(p) => p.image}
+          getTags={(p) => [p.category]}
+          getCardClassName={() => "bg-gradient-to-br from-blue-500 to-purple-600"}
+          getDetailSections={(p) => ({
+            attributes: [
+              { label: "Price", value: p.price },
+              { label: "Category", value: p.category },
+              { label: "Reviews", value: String(p.reviews) },
+            ],
+            stats: {
+              rating: p.rating,
+            },
+            statsMax: 5,
+          })}
+        />
+      );
+    }
+    ```
+
+  </Tab>
+</Tabs>
+
+### Column Layout
+
+<Tabs items={["Code"]}>
+  <Tab value="Code">
+    ```tsx
+    <ExpandableCards
+      items={data}
+      // ... other props
+      cardsGridClassName="flex flex-col gap-4 items-center"
+    />
+    ```
+  </Tab>
+</Tabs>
+
+### Custom Container Styling
+
+<Tabs items={["Code"]}>
+  <Tab value="Code">
+    ```tsx
+    <ExpandableCards
+      items={data}
+      // ... other props
+      containerClassName="bg-slate-900 w-full min-h-screen p-8"
+      cardWrapperClassName="w-72 h-96"
+    />
+    ```
+  </Tab>
+</Tabs>
+
+## Props
+
+### ExpandableCardsProps\<T\>
+
+| Prop                   | Type                                       | Required | Default                                 | Description                               |
+| ---------------------- | ------------------------------------------ | -------- | --------------------------------------- | ----------------------------------------- |
+| `items`                | `T[]`                                      | ✅       | -                                       | Array of items to display                 |
+| `getItemId`            | `(item: T) => string \| number`            | ✅       | -                                       | Extract unique ID from item               |
+| `getTitle`             | `(item: T) => string`                      | ✅       | -                                       | Extract title/name from item              |
+| `getImage`             | `(item: T) => string`                      | ✅       | -                                       | Extract image URL from item               |
+| `getCardClassName`     | `(item: T) => string`                      | ✅       | -                                       | Generate card background class (Tailwind) |
+| `getSubtitle`          | `(item: T) => string`                      | ❌       | -                                       | Extract subtitle (e.g., ID, price)        |
+| `getTags`              | `(item: T) => string[]`                    | ❌       | -                                       | Extract tags/badges to display            |
+| `getDetailSections`    | `(item: T) => ExpandableCardDetailSection` | ❌       | -                                       | Generate modal detail content             |
+| `containerClassName`   | `string`                                   | ❌       | `"w-screen ... flex flex-col ..."`      | Outer container classes                   |
+| `cardsGridClassName`   | `string`                                   | ❌       | `"flex gap-4 flex-wrap justify-center"` | Cards grid layout classes                 |
+| `cardWrapperClassName` | `string`                                   | ❌       | `"w-64 h-80"`                           | Individual card size classes              |
+
+### ExpandableCardDetailSection
+
+| Property     | Type                                 | Description                            |
+| ------------ | ------------------------------------ | -------------------------------------- |
+| `attributes` | `{ label: string; value: string }[]` | Key-value pairs displayed in grid      |
+| `stats`      | `Record<string, number>`             | Stats with animated progress bars      |
+| `statsMax`   | `number`                             | Maximum value for stats (default: 100) |
+
+## TypeScript Example
+
+```tsx
+interface Product {
+  id: number;
+  name: string;
+  category: string;
+  price: string;
+  image: string;
+  rating: number;
+}
+
+const products: Product[] = [
+  // your data
+];
+
+<ExpandableCards<Product>
+  items={products}
+  getItemId={(p) => p.id}
+  getTitle={(p) => p.name}
+  // ... other props
+/>;
+```
+
+## Customization Tips
+
+### Card Colors
+
+Use Tailwind gradient classes for vibrant cards:
+
+```tsx
+getCardClassName={(item) => {
+  const colorMap = {
+    premium: "bg-gradient-to-br from-yellow-400 to-orange-500",
+    standard: "bg-gradient-to-br from-blue-400 to-blue-600",
+    basic: "bg-gradient-to-br from-gray-400 to-gray-600",
+  };
+  return colorMap[item.tier] || colorMap.basic;
+}}
+```
+
+### Grid Layouts
+
+```tsx
+// Horizontal row (default)
+cardsGridClassName = "flex gap-4 flex-wrap justify-center";
+
+// Vertical column
+cardsGridClassName = "flex flex-col gap-4 items-center";
+
+// Grid layout
+cardsGridClassName = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4";
+```
+
+### Responsive Card Sizes
+
+```tsx
+cardWrapperClassName = "w-full sm:w-64 h-80 sm:h-96";
+```
+
+## Notes
+
+- Component must be used in a Client Component (`"use client"`)
+- Images should have proper alt text (uses `getTitle` by default)
+- Modal closes on backdrop click or close button
+- Shared layout animation requires unique `layoutId` per card
+- Stats progress bars are capped at 100% width regardless of value

@@ -1,0 +1,136 @@
+---
+title: Text Stagger
+description: An animated text component with staggered letter-by-letter hover effect
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import TextStaggerDemo from "@/components/custom/TextStagger/TextStaggerDemo";
+
+## Overview
+
+The **Text Stagger** component creates a smooth letter-by-letter animation effect on hover. Each character animates with a staggered delay, creating a wave-like transition that reveals alternate text underneath.
+
+<Tabs items={['Preview', 'Code']}>
+  <Tab value="Preview">
+    <div className="not-prose my-8">
+      <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden border border-border">
+        <TextStaggerDemo />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import TextStagger from '@/components/custom/TextStagger/TextStagger';
+
+    export default function Page() {
+      return (
+        <TextStagger href="/about">
+          HOVER ME
+        </TextStagger>
+      );
+    }
+    ```
+
+  </Tab>
+</Tabs>
+
+## Installation
+
+<Tabs items={['CLI', 'Manual']}>
+  <Tab value="CLI">
+    Install the component using the CLI:
+
+    ```bash
+    npx shadcn@latest add http://localhost:3000/r/text-stagger.json
+    ```
+
+  </Tab>
+  <Tab value="Manual">
+    1. Install dependencies:
+    ```bash
+    pnpm add motion
+    ```
+
+    2. Copy the component file:
+    - `components/custom/TextStagger/TextStagger.tsx`
+
+  </Tab>
+</Tabs>
+
+## Usage
+
+### Basic Example
+
+<Tabs items={['Preview', 'Code']}>
+  <Tab value="Preview">
+    <div className="not-prose my-8">
+      <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden border border-border">
+        <TextStaggerDemo />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import TextStagger from '@/components/custom/TextStagger/TextStagger';
+
+    export default function Page() {
+      return (
+        <TextStagger href="/about">
+          HOVER ME
+        </TextStagger>
+      );
+    }
+    ```
+
+  </Tab>
+</Tabs>
+
+### Custom Timing
+
+<Tabs items={['Code']}>
+  <Tab value="Code">
+    ```tsx
+    // Slower animation
+    <TextStagger 
+      href="/about"
+      duration={0.5}
+      staggerDelay={0.05}
+    >
+      Slow Motion
+    </TextStagger>
+
+    // Faster animation
+    <TextStagger
+      href="/contact"
+      duration={0.15}
+      staggerDelay={0.01}
+    >
+      Quick Snap
+    </TextStagger>
+    ```
+
+  </Tab>
+</Tabs>
+
+## Props
+
+| Prop           | Type     | Default                                        | Description                                   |
+| -------------- | -------- | ---------------------------------------------- | --------------------------------------------- |
+| `children`     | `string` | -                                              | The text to animate (required)                |
+| `href`         | `string` | -                                              | Link URL (required)                           |
+| `className`    | `string` | `"relative block overflow-hidden text-4xl..."` | Custom CSS classes for styling                |
+| `duration`     | `number` | `0.25`                                         | Animation duration in seconds per letter      |
+| `staggerDelay` | `number` | `0.025`                                        | Delay between each letter animation (seconds) |
+
+### Timing Presets
+
+```tsx
+// Subtle (slow and smooth)
+<TextStagger duration={0.4} staggerDelay={0.04}>Subtle</TextStagger>
+
+// Snappy (fast and responsive)
+<TextStagger duration={0.15} staggerDelay={0.01}>Snappy</TextStagger>
+
+// Dramatic (very slow)
+<TextStagger duration={0.6} staggerDelay={0.08}>Dramatic</TextStagger>
+```

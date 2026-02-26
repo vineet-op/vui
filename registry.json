@@ -10,7 +10,7 @@
       "description": "Interactive mask hover. Spotlight follows cursor; customizable text, colors, mask size. Includes MousePointer hook and mask.svg.",
       "files": [
         {
-          "path": "components/custom/MaskHover.tsx",
+          "path": "components/custom/MaskHover/MaskHover.tsx",
           "type": "registry:ui"
         },
         {
@@ -20,6 +20,36 @@
         {
           "path": "public/mask.svg",
           "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "expandable-cards",
+      "type": "registry:block",
+      "title": "Expandable Cards",
+      "description": "A fully reusable expandable cards component with modal detail view. Features smooth layout animations, customizable card styling, optional tags/badges, configurable detail sections (attributes and stats with progress bars), and flexible grid layouts. Works with any data type via generic props.",
+      "files": [
+        {
+          "path": "components/custom/ExpandableCards/expandable-cards.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "lib/PokemonData.ts",
+          "type": "registry:example"
+        }
+      ],
+      "dependencies": ["motion", "lucide-react"],
+      "registryDependencies": ["card"]
+    },
+    {
+      "name": "text-stagger",
+      "type": "registry:block",
+      "title": "Text Stagger",
+      "description": "A text stagger component that animates the text as it is hovered over. It is a reusable component that can be used to animate any text.",
+      "files": [
+        {
+          "path": "components/custom/TextStagger/TextStagger.tsx",
+          "type": "registry:ui"
         }
       ]
     }
