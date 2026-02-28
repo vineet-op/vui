@@ -52,6 +52,26 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "keyboard",
+      "type": "registry:block",
+      "title": "Keyboard",
+      "description": "A customizable keyboard component with MacBook-style design. Supports custom layouts, themes, and interactive key buttons with hover and press effects.",
+      "files": [
+        {
+          "path": "components/custom/Keyboard/Keyboard.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/custom/Keyboard/CustomButton.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "lib/KeyboardLayout.tsx",
+          "type": "registry:lib"
+        }
+      ]
     }
   ]
 }

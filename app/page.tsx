@@ -4,6 +4,7 @@ import { motion } from "motion/react"
 import { ArrowRight, Github, Sparkles, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import Keyboard from "@/components/custom/Keyboard/Keyboard"
 
 export default function Page() {
   return (
@@ -185,6 +186,7 @@ export default function Page() {
           className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent"
         />
       </div>
+
     </div>
   )
 }

@@ -1,0 +1,134 @@
+---
+title: Keyboard
+description: A customizable keyboard component with MacBook-style design
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import KeyboardDemo from "@/components/custom/Keyboard/KeyboardDemo";
+
+## Overview
+
+The **Keyboard** component displays an interactive MacBook-style keyboard with hover and press effects. Perfect for showcasing keyboard shortcuts, tutorials, or design portfolios.
+
+<Tabs items={['Preview', 'Code']}>
+  <Tab value="Preview">
+    <div className="not-prose my-8">
+      <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden border border-border">
+        <KeyboardDemo />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import Keyboard from '@/components/custom/Keyboard/Keyboard';
+
+    export default function Page() {
+      return <Keyboard />;
+    }
+    ```
+
+  </Tab>
+</Tabs>
+
+## Installation
+
+<Tabs items={['CLI', 'Manual']}>
+  <Tab value="CLI">
+    Install the component using the CLI:
+
+    ```bash
+    npx shadcn@latest add https://vui.vineetop.com/r/keyboard.json
+    ```
+
+  </Tab>
+  <Tab value="Manual">
+    Copy the component files:
+    - `components/custom/Keyboard/Keyboard.tsx`
+    - `components/custom/Keyboard/CustomButton.tsx`
+    - `lib/KeyboardLayout.tsx`
+  </Tab>
+</Tabs>
+
+## Usage
+
+### Basic Example
+
+```tsx
+import Keyboard from "@/components/custom/Keyboard/Keyboard";
+
+export default function Page() {
+  return <Keyboard />;
+}
+```
+
+### Light Theme
+
+```tsx
+<Keyboard theme="light" />
+```
+
+### Custom Styling
+
+```tsx
+<Keyboard className="max-w-3xl shadow-xl" />
+```
+
+### Custom Layout
+
+```tsx
+const customLayout = [
+  [{ label: "Q" }, { label: "W" }, { label: "E" }, { label: "R" }],
+  // ... more rows
+];
+
+<Keyboard layout={customLayout} />;
+```
+
+## Props
+
+| Prop        | Type                | Default        | Description            |
+| ----------- | ------------------- | -------------- | ---------------------- |
+| `layout`    | `KeyboardKey[][]`   | MacBook layout | Custom keyboard layout |
+| `theme`     | `'dark' \| 'light'` | `'dark'`       | Color theme            |
+| `className` | `string`            | -              | Additional CSS classes |
+
+## KeyboardKey Interface
+
+```tsx
+interface KeyboardKey {
+  label?: string; // Main key label
+  subLabel?: string; // Secondary label (top)
+  icon?: React.ReactNode; // Custom icon
+  wide?: boolean; // Double width key
+  space?: boolean; // Extra wide space key
+}
+```
+
+## Examples
+
+### Minimal Layout
+
+```tsx
+const minimalLayout = [
+  [{ label: "Q" }, { label: "W" }, { label: "E" }, { label: "R" }],
+  [{ label: "A" }, { label: "S" }, { label: "D" }, { label: "F" }],
+];
+
+<Keyboard layout={minimalLayout} theme="light" />;
+```
+
+### With Icons
+
+```tsx
+import { Command, Option } from "lucide-react";
+
+const iconLayout = [
+  [
+    { icon: <Command className="w-4 h-4" /> },
+    { label: "Space", wide: true },
+    { icon: <Option className="w-4 h-4" /> },
+  ],
+];
+
+<Keyboard layout={iconLayout} />;
+```

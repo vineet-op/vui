@@ -17,7 +17,7 @@ The **Expandable Cards** component is a fully generic and reusable component tha
     Install the component using the CLI:
 
     ```bash
-    npx shadcn@latest add http://localhost:3000/r/expandable-cards.json
+    npx shadcn@latest add https://vui.vineetop.com/r/expandable-cards.json
     ```
 
   </Tab>
@@ -245,11 +245,3 @@ cardsGridClassName = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4";
 ```tsx
 cardWrapperClassName = "w-full sm:w-64 h-80 sm:h-96";
 ```
-
-## Notes
-
-- Component must be used in a Client Component (`"use client"`)
-- Images should have proper alt text (uses `getTitle` by default)
-- Modal closes on backdrop click or close button
-- Shared layout animation requires unique `layoutId` per card
-- Stats progress bars are capped at 100% width regardless of value

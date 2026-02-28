@@ -32,7 +32,18 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
         >
           <TooltipProvider>
-            <RootProvider>
+            <RootProvider
+              search={{
+                enabled: true,
+                hotKey: [
+                  {
+                    key: 'k',
+                    display: 'K',
+                    modifier: 'ctrlKey',
+                  },
+                ],
+              }}
+            >
               {children}
             </RootProvider>
           </TooltipProvider>
