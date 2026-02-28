@@ -35,13 +35,6 @@ export default function RootLayout({
             <RootProvider
               search={{
                 enabled: true,
-                hotKey: [
-                  {
-                    key: 'k',
-                    display: 'K',
-                    modifier: 'ctrlKey',
-                  },
-                ],
               }}
             >
               {children}
