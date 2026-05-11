@@ -64,21 +64,30 @@ const HeroWithScales = () => {
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
                 className="flex items-center mt-6 pn-10 gap-2 relative z-20"
               >
-                <button
+                <motion.button
                   onClick={() => router.push("/docs")}
+                  whileTap={{ scale: 0.98 }}
                   className="px-3 py-1.5 sm:px-3.5 sm:py-2 md:px-4 md:py-2 cursor-pointer bg-white text-neutral-950 border border-neutral-200 shadow-sm flex items-center gap-2 rounded-md font-sans"
                 >
                   <span className="font-medium text-xs sm:text-sm whitespace-nowrap">
                     Browse Components
                   </span>
                   <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
-                </button>
-                <button className="px-3 py-1.5 sm:px-3.5 sm:py-2 md:px-4 md:py-2 cursor-pointer text-white flex items-center gap-2 rounded-md font-sans">
-                  <span className="font-medium text-xs sm:text-sm whitespace-nowrap">
+                </motion.button>
+                <motion.button
+                  whileTap={{ scale: 0.98 }}
+                  className="px-3 py-1.5 sm:px-3.5 sm:py-2 md:px-4 md:py-2 cursor-pointer text-white flex items-center gap-2 rounded-md font-sans"
+                >
+                  <a
+                    href="https://github.com/vineet-op/vui"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-xs sm:text-sm whitespace-nowrap"
+                  >
                     Star on Github
-                  </span>
+                  </a>
                   <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
-                </button>
+                </motion.button>
               </motion.div>
             </div>
             <Lines className="absolute top-0  mask-b-from-10% inset-x-0" />
