@@ -4,6 +4,15 @@
 @import 'fumadocs-ui/css/neutral.css';
 @import 'fumadocs-ui/css/preset.css';
 
+/* Override fumadocs font to use Geist Sans */
+#nd-docs-layout {
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+#nd-docs-layout code,
+#nd-docs-layout pre {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

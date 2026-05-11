@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { TooltipProvider } from "@/components/ui/tooltip"
-import { ViewTransitions } from "next-view-transitions"
-import { RootProvider } from 'fumadocs-ui/provider/next';
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { ViewTransitions } from "next-view-transitions";
+import { RootProvider } from "fumadocs-ui/provider/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,7 +17,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "VUI",
-  description: "Beautiful, animated components for modern web applications built with Tailwind CSS, Shadcn UI, and Framer Motion",
+  description:
+    "Beautiful, animated components for modern web applications built with Tailwind CSS, Shadcn UI, and Framer Motion",
 };
 
 export default function RootLayout({
@@ -26,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <ViewTransitions>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
@@ -35,6 +36,10 @@ export default function RootLayout({
             <RootProvider
               search={{
                 enabled: true,
+              }}
+              theme={{
+                defaultTheme: "light",
+                enabled: false,
               }}
             >
               {children}
